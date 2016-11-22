@@ -1,0 +1,18 @@
+<form name="myForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <input class="form-control" type="text" name="myName" ng-model="name" ng-minlength="5" ng-maxlength="20" required placeholder="Enter your name"/>
+            </div>
+            <div class="col-xs-6">
+                myForm.myName.$error = {{ myForm.myName.$error }}
+            </div>
+        </div>
+        <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert">
+            <div ng-message="required">You did not enter a field</div>
+            <div ng-message="minlength">Your field is too short</div>
+            <div ng-message="maxlength">Your field is too long</div>
+        </div>
+        <button class="btn btn-default" data-ng-click="testClick(myForm.myName)">Click</button>
+    </div>
+</form>

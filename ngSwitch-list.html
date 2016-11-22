@@ -1,0 +1,17 @@
+<form name="myForm2">
+    <div class="row">
+        <div class="col-xs-6">
+
+            Enter content:
+            <input class="form-control" type="text" name="myName2" ng-model="name2" required ng-list />
+        </div>
+
+    </div>
+    <pre>myForm2.myName2.$error = {{ myForm2.myName2.$error }}</pre>
+    <div data-ng-switch="testCase()">
+        <div data-ng-switch-when="less">Not Long Enough</div>
+        <div data-ng-switch-when="more">Too Much</div>
+        <div data-ng-switch-default>Just Right</div>
+    </div>
+    <button class="btn btn-default" data-ng-click="testClick(myForm2.myName2)">Click</button>
+</form>

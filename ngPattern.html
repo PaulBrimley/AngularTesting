@@ -1,0 +1,18 @@
+<form name="myForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6"><input class="form-control" name="inputField" type="text" data-ng-copy="sayHi()" data-ng-model="text"  required data-ng-pattern="regex"></div>
+            <div class="col-xs-6"> <button class="btn btn-default" data-ng-dblclick="click(myForm.inputField.$error)">Double Click</button></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div>Input Valid: {{myForm.inputField.$valid}}</div>
+                <div>Input Error: {{myForm.inputField.$error}}</div>
+            </div>
+            <div class="col-xs-6">
+                <div>Form Valid: {{myForm.$valid}}</div>
+                <div>Form Error Required: {{myForm.$error}}</div>
+            </div>
+        </div>
+    </div>
+</form>

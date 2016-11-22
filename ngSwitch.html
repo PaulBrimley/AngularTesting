@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <select class="form-control" name="" id="" data-ng-model="selection" data-ng-options="item for item in items"></select>
+        </div>
+        <div class="col-xs-6">
+            <div data-ng-switch on="selection">
+                <div data-ng-switch-when="First">Here is First</div>
+                <div data-ng-switch-when="Second">Here is Second</div>
+                <div data-ng-switch-when="Third">Here is Third</div>
+                <div data-ng-switch-when="Fourth">Here is Fourth</div>
+                <div data-ng-switch-default>Default</div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <ui-view></ui-view>
+</div>
