@@ -1,0 +1,23 @@
+<hr/>
+<div><button class="btn btn-default" data-ng-click="show = !show">Toggle Show</button></div>
+<br/>
+<div class="moving" data-ng-show="show">
+    Animate show/hide
+</div>
+<hr/>
+<input type="text" class="form-control" data-ng-model="filterThis" >
+<div data-ng-repeat="item in list | filter:filterThis" class="repeated-item animate-this-thing"  ng-click="remove($index)" >
+    <div class="repeated-item-inside">{{$index}}: {{ item }}</div>
+</div>
+<br/>
+<form name="form1" data-ng-submit="add(item)">
+    <div class="input-group">
+        <input name="itemField" type="text" class="form-control" data-ng-model="item" required/>
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" data-ng-disabled="form1.itemField.$error.required">Submit</button>
+        </span>
+    </div>
+</form>
+<button class="btn btn-default" data-ng-click="shuffle(list)">Shuffle</button>
+
+<hr/>

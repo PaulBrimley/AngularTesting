@@ -1,11 +1,11 @@
-<form name="myForm">
+<form name="myForm" novalidate data-ng-submit="testClick()">
     <div class="container">
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-6" data-ng-class="{'has-warning': myForm.myName.$touched && (myForm.myName.$error.minlength || myForm.myName.$error.maxlength || myForm.myName.$error.required)}">
                 <input class="form-control" type="text" name="myName" ng-model="name" ng-minlength="5" ng-maxlength="20" required placeholder="Enter your name"/>
             </div>
             <div class="col-xs-6">
-                myForm.myName.$error = {{ myForm.myName.$error }}
+                myForm.myName = {{ myForm.myName.$touched}}
             </div>
         </div>
         <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert">
@@ -13,6 +13,6 @@
             <div ng-message="minlength">Your field is too short</div>
             <div ng-message="maxlength">Your field is too long</div>
         </div>
-        <button class="btn btn-default" data-ng-click="testClick(myForm.myName)">Click</button>
+        <button class="btn btn-default" type="submit">Submit</button>
     </div>
 </form>

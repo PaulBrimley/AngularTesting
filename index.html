@@ -3,37 +3,7 @@
 <head>
     <title data-ng-bind="pageTitle"></title>
     <link rel="stylesheet" href="bootstrap.min.css">
-    <style>
-        .test {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-        .test.test2 {
-            opacity: 1;
-        }
-        .header {
-            flex: 1;
-            display: flex;
-            height: 30px;
-        }
-        .header div {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .main {
-            flex:10;
-            overflow-y: auto;
-        }
-        .footer {
-            flex: 1;
-        }
-
-    </style>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body >
 
@@ -42,7 +12,7 @@
 
     <div class="header">
         <div ng-repeat="state in states">
-            <button class="btn btn-default" ng-click="navigateStates(state)">{{state}}</button>
+            <button class="btn btn-default btn-block" ng-click="navigateStates(state)">{{state}}</button>
         </div>
     </div>
     <ui-view class="main"></ui-view>
@@ -63,5 +33,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-messages.min.js"></script>
 <script type="text/javascript" src="bower_components/angular-ui-mask/dist/mask.js"></script>
 <script src="js/app.js"></script>
+<script src="js/ngPatternController.js"></script>
 </body>
 </html>
