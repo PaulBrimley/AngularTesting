@@ -112,20 +112,24 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     var element = angular.element(event.target);
                     var container = element.parent();
 
+                    var xDir = true;
+                    var yDir = true;
+
+
                     function bouncer() {
-                        var goX = container.height();
-                        var goY = ;
+
+                        
                         $animateCss(element, {
                             from: {left: 0, top: 0},
                             to: {left: goX, top: goY}
                         });
                     }
 
-                    bouncer = $animateCss(element, {
+                    /*bouncer = $animateCss(element, {
                         from: {left: 0, top: 0},
                         to: {left: (randomIntFromInterval() + '%'), top: (container.height() - element.height() - 1 + 'px')},
                         duration: 1
-                    });
+                    });*/
 
                 };
 
@@ -136,11 +140,21 @@ app.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 pageTitle: 'animate2'
             }
+        })
+        .state('angularForms', {
+            url: '/angularForms',
+            templateUrl: 'views/angularForms.html',
+            controller: function($scope, formService) {
+                $scope.employee = formService.employee;
+            },
+            data: {
+                pageTitle: 'Angular Forms'
+            }
         });
     $urlRouterProvider.when('', '/ngList')
 });
 
-app.controller('mainCtrl', function ($scope, $state) {
+app.controller('mainCtrl', function ($rootScope, $scope, $state) {
     $scope.states = [];
     $state.get().map(function (state) {
        if (!state.abstract) {
@@ -150,6 +164,7 @@ app.controller('mainCtrl', function ($scope, $state) {
     $scope.navigateStates = function (state) {
         $state.transitionTo(state);
     };
+
 
     $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
         $scope.pageTitle = $state.current.data.pageTitle;
