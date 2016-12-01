@@ -1,10 +1,12 @@
 <br/>
-
-<div class="container">
-    <form role="form" name="employeeForm" class="form-horizontal" novalidate data-ng-submit="submit()">
+<div class="modal-header">
+    <div class="modal-title">Test Modal</div>
+</div>
+<div class="modal-body">
+    <form action="" role="form" name="employeeForm" class="form-horizontal" novalidate>
         <fieldset>
             <legend>Basic Information</legend>
-            <div class="form-group" data-ng-class="{'has-error': employeeForm.fullName.$invalid}">
+            <div class="form-group">
                 <label for="fullName" class="col-sm-3 control-label">Name</label>
                 <div class="col-sm-9">
                     <input type="text" id="fullName" name="fullName" class="form-control" data-ng-model="editableEmployee.fullName" ng-required="true"/>
@@ -74,11 +76,12 @@
                 </div>
             </div>
         </fieldset>
-        <div class="col-sm-offset-3 col-sm-9">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button class="btn btn-primary" data-ng-click="cancel()">Cancel</button>
-        </div>
     </form>
 </div>
 
-
+<div class="modal-footer">
+    <div class="col-sm-offset-3 col-sm-9">
+        <button type="submit" class="btn btn-primary" data-ng-click="submit()">Submit</button>
+        <button class="btn btn-primary" data-ng-click="cancel()">Cancel</button>
+    </div>
+</div>

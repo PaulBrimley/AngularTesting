@@ -1,0 +1,49 @@
+{
+    "roles": [
+        {
+            "id": "0",
+            "name": "Developer",
+            "category": "2"
+        },
+        {
+            "id": "1",
+            "name": "Agency",
+            "category": "0"
+        },
+        {
+            "id": "2",
+            "name": "Claims",
+            "category": "3"
+        },
+        {
+            "id": "3",
+            "name": "Underwriting",
+            "category": "4"
+        },
+        {
+            "id": "4",
+            "name": "Agency-Intern",
+            "category": "0"
+        },
+        {
+            "id": "5",
+            "name": "Developer-Intern",
+            "category": "2"
+        },
+        {
+            "id": "6",
+            "name": "Claims-Temp",
+            "category": "3"
+        },
+        {
+            "id": "7",
+            "name": "Admin",
+            "category": "5"
+        },
+        {
+            "id": "8",
+            "name": "Batman",
+            "category": ""
+        }
+    ]
+}

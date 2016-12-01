@@ -1,0 +1,57 @@
+<br/>
+Admin Panel for Service Desk Mockup
+<div class="container">
+    <form action="" class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="" class="col-sm-3 control-label">Search for User</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control">
+            </div>
+        </div>
+    </form>
+
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label for="">Categories</label>
+            <select class="form-control" name="" id="" data-ng-options="category.name for category in categories" data-ng-model="selectedCategory">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label for="">Roles</label>
+            <select class="form-control" name="" id="" data-ng-options="role.name for role in roles | roleFilter:selectedCategory.id" data-ng-model="selectedRole">
+                
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label for="">Resources</label>
+            <select class="form-control" name="" id="" data-ng-options="resource.name for resource in resources" data-ng-model="selectedResource"></select>
+        </div>
+
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label for="">Role/Resource</label>
+            <select class="form-control" name="" id="" data-ng-options="roleResource.roleId for roleResource in rolesResources" data-ng-model="selectedRoleResource"></select>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group">
+            <label for="">Role/Resource/Method</label>
+            <select class="form-control" name="" id="" data-ng-options="roleResourceMethod.rolesResourceId for roleResourceMethod in rolesResourcesMethods" data-ng-model="selectedRoleResourceMethod"></select>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group">
+
+
+        </div>
+    </div>
+
+
+
+</div>

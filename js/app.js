@@ -1,7 +1,85 @@
-var app = angular.module('testApp', ['ngAnimate','ngMessages', 'ui.mask', 'ui.router']);
+var app = angular.module('testApp', ['ngAnimate','ngMessages', 'ui.mask', 'ui.router', 'ngResource','ui.bootstrap']);
+
+
+
+app.filter('roleFilter', function () {
+    return function(items, category){
+        console.log(items, category);
+        if (category) {
+            var newArray = [];
+            items.map(function(item) {
+                if (item.category === category) {
+                    newArray.push(item);
+                }
+            });
+            console.log(newArray);
+            return newArray;
+        } else {
+            return items;
+        }
+
+    }
+});
+
 
 app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
+
+        .state('resourceAdminMockup', {
+            url: '/resourceAdminMockup',
+            templateUrl: 'views/resourceAdminMockup.html',
+            controller: function($scope, adminPanelMockupSvc) {
+                $scope.categories = [];
+                $scope.roles = [];
+                $scope.resources = [];
+                $scope.rolesResources = [];
+                $scope.rolesResourcesMethods = [];
+                adminPanelMockupSvc.get('adminPanelMockCategories.json').then(function (test) {
+                    $scope.categories = test['categories'];
+                });
+                adminPanelMockupSvc.get('adminPanelMockRoles.json').then(function (test) {
+                    $scope.roles = test['roles'];
+                });
+                adminPanelMockupSvc.get('adminPanelMockResources.json').then(function (test) {
+                    $scope.resources = test['resources'];
+                });
+                adminPanelMockupSvc.get('adminRolesResources.json').then(function (test) {
+                    $scope.rolesResources = test['rolesResources'];
+                });
+                adminPanelMockupSvc.get('adminRolesResourcesMethods.json').then(function (test) {
+                    $scope.rolesResourcesMethods = test['rolesResourcesMethods'];
+                });
+            },
+            data: {
+                pageTitle: 'Resource Admin'
+            }
+        })
+        .state('systemAdminMockup', {
+            url: '/systemAdminMockup',
+            templateUrl: 'views/systemAdminMockup.html',
+            controller: function($scope, adminPanelMockupSvc) {
+
+                $scope.search = function () {
+                    $scope.foundUsers = [];
+                    adminPanelMockupSvc.get('adminPanelMockUser.json', 'users', $scope.userToSearch).then(function (test) {
+                        if (test.length > 0) {
+                            $scope.foundUsers = test;
+                            $scope.userTosearch = '';
+                        } else {
+                            $scope.foundUsers.push({name: 'None', id: -1})
+                        }
+
+                    });
+                };
+
+                $scope.userSelected = function () {
+                    console.log('User selected')
+                }
+            },
+            data: {
+                pageTitle: 'System Admin'
+            }
+        })
         .state('ngPattern', {
             url: '/ngPattern',
             templateUrl: 'views/ngPattern.html',
@@ -141,17 +219,28 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 pageTitle: 'animate2'
             }
         })
-        .state('angularForms', {
+        .state('angularUiForms', {
             url: '/angularForms',
             templateUrl: 'views/angularForms.html',
-            controller: function($scope, formService) {
-                $scope.employee = formService.employee;
+            controller: function($scope, $uibModal) {
+                $scope.openModal = function() {
+                    var modal = $uibModal.open({
+                        templateUrl: '../views/modalForm.html',
+                        controller: 'formController',
+                        size: 'md'
+                    });
+                    modal.result.then(function (data) {
+                        console.log(data);
+                    }).catch(function (test) {
+                        console.log('here in test', test)
+                    })
+                }
             },
             data: {
-                pageTitle: 'Angular Forms'
+                pageTitle: 'Angular UI Forms'
             }
         });
-    $urlRouterProvider.when('', '/ngList')
+    $urlRouterProvider.otherwise('/resourceAdminMockup');
 });
 
 app.controller('mainCtrl', function ($rootScope, $scope, $state) {
@@ -165,12 +254,28 @@ app.controller('mainCtrl', function ($rootScope, $scope, $state) {
         $state.transitionTo(state);
     };
 
-
     $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
         $scope.pageTitle = $state.current.data.pageTitle;
         }
     );
 });
+
+app.controller('formController', function($scope, formService, $uibModal, $uibModalInstance) {
+    //this controller is run every time the modal opens
+    $scope.employee = formService.employee;
+    $scope.departments = ['Engineering', 'Marketing','Finance','Administration'];
+    $scope.editableEmployee = angular.copy($scope.employee);
+
+
+    $scope.submit = function () {
+        $scope.employee = angular.copy($scope.editableEmployee);
+        $uibModalInstance.close($scope.employee);
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss($scope.employee);
+    };
+})
 
 app.animation('.animate-this-thing', ['$animateCss', function($animateCss) {
     return {

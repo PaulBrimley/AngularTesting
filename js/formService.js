@@ -3,11 +3,12 @@ angular.module('testApp').factory('formService', function () {
         employee: {
             fullName: 'Paul Brimley',
             notes: 'Best ever',
-            department: 'Admin',
+            department: 'Administration',
             perkCar: true,
             perkStock: false,
             perkSixWeeks: true,
-            payrollType: 'none'
+            payrollType: 'ten99',
+            dateHired: '6/16/82'
         }
     }
 });

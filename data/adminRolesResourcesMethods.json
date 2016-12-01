@@ -1,0 +1,19 @@
+{
+  "rolesResourcesMethods": [
+    {
+      "id": "0",
+      "rolesResourceId": "0",
+      "method": "GET"
+    },
+    {
+      "id": "1",
+      "rolesResourceId": "0",
+      "method": "PUT"
+    },
+    {
+      "id": "2",
+      "rolesResourceId": "3",
+      "method": "*ALL"
+    }
+  ]
+}

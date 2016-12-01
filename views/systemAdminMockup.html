@@ -1,0 +1,24 @@
+<br/>
+Admin Panel for Service Desk Mockup
+<div class="container">
+    <form class="form-horizontal" role="form" data-ng-submit="search()">
+        <div class="form-group">
+            <label for="" class="col-sm-3 control-label">Search for User</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input type="text" class="form-control" data-ng-model="userToSearch" autofocus/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default">Search</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div data-ng-show="foundUsers[0].id && foundUsers[0].id > -1">
+        <div>Select from these users:</div>
+        <div data-ng-repeat="user in foundUsers"><a href="" data-ng-click="userSelected()">{{user.name}}</a></div>
+    </div>
+    <div data-ng-show="foundUsers[0].id && foundUsers[0].id === -1">No users found with that id or name</div>
+
+
+</div>

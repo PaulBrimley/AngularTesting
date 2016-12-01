@@ -1,0 +1,64 @@
+{
+  "resources": [
+    {
+      "id": "0",
+      "name": "/admin/users",
+      "category": "1",
+      "type": "view"
+    },
+    {
+      "id": "1",
+      "name": "/admin/dinner",
+      "category": "1",
+      "type": "view"
+    },
+    {
+      "id": "2",
+      "name": "/admin/basketball",
+      "category": "1",
+      "type": "view"
+    },
+    {
+      "id": "3",
+      "name": "/agency/agent",
+      "category": "0",
+      "type": "endpoint"
+    },
+    {
+      "id": "4",
+      "name": "/agency/agentContacts",
+      "category": "0",
+      "type": "view"
+    },
+    {
+      "id": "5",
+      "name": "/agency/agentAddresses",
+      "category": "0",
+      "type": "endpoint"
+    },
+    {
+      "id": "6",
+      "name": "/agency/agentAgents",
+      "category": "0",
+      "type": "view"
+    },
+    {
+      "id": "7",
+      "name": "/claims/claims",
+      "category": "3",
+      "type": "view"
+    },
+    {
+      "id": "8",
+      "name": "/claims/rockAndRoll",
+      "category": "3",
+      "type": "view"
+    },
+    {
+      "id": "9",
+      "name": "/underwriting/figureItOut",
+      "category": "4",
+      "type": "endpoint"
+    }
+  ]
+}

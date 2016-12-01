@@ -1,0 +1,74 @@
+{
+  "rolesResources": [
+    {
+      "id": "0",
+      "roleId": "7",
+      "resourceId": "0"
+    },
+    {
+      "id": "1",
+      "roleId": "7",
+      "resourceId": "1"
+    },
+    {
+      "id": "2",
+      "roleId": "7",
+      "resourceId": "2"
+    },
+    {
+      "id": "3",
+      "roleId": "1",
+      "resourceId": "3"
+    },
+    {
+      "id": "4",
+      "roleId": "1",
+      "resourceId": "4"
+    },
+    {
+      "id": "5",
+      "roleId": "1",
+      "resourceId": "5"
+    },
+    {
+      "id": "6",
+      "roleId": "1",
+      "resourceId": "6"
+    },
+    {
+      "id": "7",
+      "roleId": "2",
+      "resourceId": "7"
+    },
+    {
+      "id": "8",
+      "roleId": "2",
+      "resourceId": "8"
+    },
+    {
+      "id": "9",
+      "roleId": "3",
+      "resourceId": "9"
+    },
+    {
+      "id": "10",
+      "roleId": "7",
+      "resourceId": "8"
+    },
+    {
+      "id": "11",
+      "roleId": "7",
+      "resourceId": "9"
+    },
+    {
+      "id": "12",
+      "roleId": "7",
+      "resourceId": "7"
+    },
+    {
+      "id": "13",
+      "roleId": "7",
+      "resourceId": "6"
+    }
+  ]
+}

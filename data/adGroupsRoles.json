@@ -1,0 +1,29 @@
+{
+  "groupRoles": [
+    {
+      "id": "0",
+      "group": "hash1",
+      "role": "0"
+    },
+    {
+      "id": "1",
+      "group": "hash2",
+      "role": "1"
+    },
+    {
+      "id": "2",
+      "group": "hash3",
+      "role": "2"
+    },
+    {
+      "id": "3",
+      "group": "hash4",
+      "role": "3"
+    },
+    {
+      "id": "4",
+      "group": "hash5",
+      "role": "4"
+    }
+  ]
+}

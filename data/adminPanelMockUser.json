@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "name": "Paul Brimley",
+      "id": "123456",
+      "groups": [
+        {
+          "id": "hash1",
+          "name": "Developer"
+        }
+      ],
+      "specialEndpoints": []
+    },
+    {
+      "name": "Josh Duncan",
+      "id": "414114"
+    },
+    {
+      "name": "Bronco",
+      "id": "623456"
+    },
+    {
+      "name": "Ghandi",
+      "id": "151551"
+    },
+    {
+      "name": "Buddha",
+      "id": "622345"
+    },
+    {
+      "name": "James Carter",
+      "id": "123415"
+    },
+    {
+      "name": "Legalos",
+      "id": "727772"
+    }
+  ]
+
+}
