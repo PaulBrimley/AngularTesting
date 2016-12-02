@@ -1,0 +1,19 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-repeat="data in tableData.data">
+            <td>{{data.name}}</td>
+            <td style="text-align: center">
+                <button class="btn btn-xs btn-info btn-block">Edit</button>
+                <button class="btn btn-xs btn-danger btn-block">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

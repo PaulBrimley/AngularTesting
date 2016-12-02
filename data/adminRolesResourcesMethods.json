@@ -12,6 +12,16 @@
     },
     {
       "id": "2",
+      "rolesResourceId": "0",
+      "method": "POST"
+    },
+    {
+      "id": "3",
+      "rolesResourceId": "0",
+      "method": "DELETE"
+    },
+    {
+      "id": "4",
       "rolesResourceId": "3",
       "method": "*ALL"
     }

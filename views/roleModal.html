@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <div class="modal-title">Create New Role</div>
+</div>
+<div class="modal-body">
+    <form action="" role="form" name="roleForm" class="form-horizontal" novalidate>
+        <div class="form-group">
+            <label for="roleName" class="col-sm-3 control-label">Role</label>
+            <div class="col-sm-9">
+                <input type="text" id="roleName" name="roleName" class="form-control" data-ng-model="newRole.name" ng-required="true"/>
+                <span class="help-block" data-ng-show="roleForm.roleName.$error.required">Role name is required</span>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="col-offset-3 col-sm-9">
+        <button type="submit" class="btn btn-primary" data-ng-click="submit()">Submit</button>
+        <button class="btn btn-primary" data-ng-click="cancelModal()">Cancel</button>
+    </div>
+</div>

@@ -1,8 +1,8 @@
 angular.module('testApp').factory('adminPanelMockupSvc', function ($resource) {
     var baseLink = '../data/';
     return {
-        get: function (link, params, userInfo) {
-            return $resource(baseLink + link, undefined, {
+        get: function (url, params, userInfo) {
+            return $resource(baseLink + url, {
                 get: {method: 'GET'}
             }).get().$promise.then(function (response) {
                 if (params) {
@@ -19,6 +19,14 @@ angular.module('testApp').factory('adminPanelMockupSvc', function ($resource) {
                     return response;
                 }
             });
+        },
+        save: function(url, data) {
+            return $resource(baseLink + url, {
+                save: {method: 'POST'}
+            }).save(data).$promise.then(function (response) {
+                console.log(response);
+                return response;
+            })
         }
 
     }

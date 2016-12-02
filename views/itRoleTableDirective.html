@@ -1,0 +1,37 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Role</th>
+            <th>Category</th>
+            <th>Resources</th>
+            <th>Methods</th>
+            <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-repeat="data in tableData.data">
+            <td>{{data.name}}</td>
+            <td>
+                {{data.category.name}}
+                <!--<div data-ng-repeat="category in data.categories">{{category.name}}</div>-->
+            </td>
+            <td>
+                <div data-ng-repeat="resource in data.resources">{{resource.name}}</div>
+            </td>
+            <td>
+                <div data-ng-repeat="resource in data.resources" style="white-space: nowrap">
+                    <span data-ng-repeat="method in resource.methods">
+                        {{method}}
+                        <span data-ng-show="$index < resource.methods.length - 1">/</span>
+                    </span>
+                </div>
+            </td>
+            <td style="text-align: center">
+                <button class="btn btn-xs btn-info btn-block">Edit</button>
+                <button class="btn btn-xs btn-danger btn-block">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
