@@ -36,8 +36,19 @@
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">Date Hired</label>
-                <p class="col-sm-9 input-group" data-ng-class="{'has-error': !employeeForm.birthdate1.$valid}">
-                    <input name="birthdate1" type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="editableEmployee.dateHired" is-open="popup1.opened" data-ng-pattern="dateValidator"/>
+                <p class="col-sm-9 input-group" data-ng-class="{'has-error': employeeForm.birthdate1.$invalid}">
+                    <input
+                            name="birthdate1"
+                            type="text"
+                            class="form-control"
+                            uib-datepicker-popup="yyyy-MM-dd"
+                            ng-model="editableEmployee.dateHired"
+                            is-open="popup1.opened"
+                            data-ng-pattern="dateValidator"
+                            ui-mask="9999-99-99"
+                            model-view-value="{{true}}"
+                            ui-mask-placeholder-char="{{'\ '}}"
+                            />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="popup1.opened = true"><i class="glyphicon glyphicon-calendar"></i></button>
                       </span>
