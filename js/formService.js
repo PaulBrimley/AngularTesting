@@ -8,7 +8,7 @@ angular.module('testApp').factory('formService', function () {
             perkStock: false,
             perkSixWeeks: true,
             payrollType: 'ten99',
-            dateHired: '6/16/82'
+            dateHired: new Date(1982, 6, 16)
         }
     }
 });

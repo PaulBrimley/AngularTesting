@@ -6,24 +6,22 @@ angular.module('testApp').directive('employeeForm', function ($uibModal, formSer
            scope.employee = formService.employee;
            scope.departments = ['Engineering', 'Marketing','Finance','Administration'];
            scope.editableEmployee = angular.copy(scope.employee);
-           scope.dateOptions = {
-               dateDisabled: disabled,
-               formatYear: 'yy',
-               maxDate: new Date(2020, 5, 22),
-               minDate: new Date(),
-               startingDay: 1
-           };
+
            scope.popup1 = {
                opened: false
            };
 
+           //disables weekend selection
            function disabled(data) {
                var date = data.date,
                    mode = data.mode;
                return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
            }
+           scope.dateOptions = {
+               formatYear: 'yy'
+           };
 
-
+            scope.dateValidator = /^\d{4}[\-\/\s]?((((0[13578])|(1[02]))[\-\/\s]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\-\/\s]?(([0-2][0-9])|(30)))|(02[\-\/\s]?[0-2][0-9]))$/;
 
            scope.open1 = function() {
                scope.popup1.opened = true;
