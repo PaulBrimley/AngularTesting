@@ -29,8 +29,19 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">Date Hired</label>
                 <div class="col-sm-9">
+                    <input class="form-control" type="text" data-ng-model="editableEmployee.dateHired" format-date/>
                     <div uib-datepicker data-ng-model="editableEmployee.dateHired" datepicker-options="{showWeeks: false}"></div>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Date Hired</label>
+                <p class="col-sm-9 input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                </p>
             </div>
 
         </fieldset>

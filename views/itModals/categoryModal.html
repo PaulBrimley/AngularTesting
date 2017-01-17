@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <div class="modal-title">Create New Category</div>
+</div>
+<div class="modal-body">
+    <form action="" role="form" name="categoryForm" class="form-horizontal" novalidate>
+        <div class="form-group">
+            <label for="categoryName" class="col-sm-3 control-label">Category</label>
+            <div class="col-sm-9">
+                <input type="text" id="categoryName" name="categoryName" class="form-control" data-ng-model="newCategory.name" ng-required="true"/>
+                <span class="help-block" data-ng-show="categoryForm.categoryName.$error.required">Category name is required</span>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="col-offset-3 col-sm-9">
+        <button type="submit" class="btn btn-primary" data-ng-click="submit()">Submit</button>
+        <button class="btn btn-primary" data-ng-click="cancelModal()">Cancel</button>
+    </div>
+</div>

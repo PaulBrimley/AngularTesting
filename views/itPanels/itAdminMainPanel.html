@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <select class="form-control" data-ng-options="data.name for data in panelData.data" data-ng-model="panelData.selectedItem" data-ng-change="selectItem()">
+                        <option value="">Select {{panelData.title}}</option>
+                    </select>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" data-ng-click="panelData.modalOpener()">New</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div data-ng-switch="panelData.title">
+                    <div data-ng-switch-when="Category">
+                         <div data-ng-include="panelData.panel"></div>
+                    </div>
+                    <div data-ng-switch-when="Role">
+                        <div data-ng-include="panelData.panel"></div>
+                    </div>
+                    <div data-ng-switch-when="Resource">
+                        <div data-ng-include="panelData.panel"></div>
+                    </div>
+                    <div data-ng-switch-when="Group-to-Role">
+                        <div data-ng-include="panelData.panel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

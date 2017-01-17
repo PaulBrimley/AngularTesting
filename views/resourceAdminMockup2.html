@@ -1,0 +1,100 @@
+<br/>
+<br/>
+Admin Panel for Service Desk Mockup
+<br/>
+<div class="container">
+
+    <uib-tabset active="1">
+        <uib-tab index="0" heading="Categories">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="">Current Categories</label>
+                            <it-category-table table-data="categories"></it-category-table>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="">Create New Category</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" data-ng-model="newCategory"/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" data-ng-click="createCategory()">Create</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </uib-tab>
+        <uib-tab index="1" heading="Roles">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="">Current Roles <button class="btn btn-success btn-xs" data-ng-click="showRoleModal()">+</button></label>
+                            <it-role-table table-data="roles"></it-role-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </uib-tab>
+        <uib-tab index="2" heading="Resources">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="">Current Resources</label>
+                            <it-resource-table table-data="resources"></it-resource-table>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="">Create New Resource</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" data-ng-model="newCategory"/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" data-ng-click="createCategory()">Create</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </uib-tab>
+        <uib-tab index="3" heading="Group-to-roles">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label for="">Current Group-to-role mapping</label>
+                            <it-group-role table-data="groupsRoles"></it-group-role>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="">Create New Map</label>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <select class="form-control" name="" id="" data-ng-options="group.name for group in groups | groupFilter:groupsRoles" data-ng-model="selectedGroup">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select class="form-control" name="" id="" data-ng-options="role.name for role in roles.data" data-ng-model="selectedRole">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-default btn-block">Connect</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+</div>

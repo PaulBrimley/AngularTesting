@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <div class="modal-title">Create New Group-to-Role</div>
+</div>
+<div class="modal-body">
+    <form action="" role="form" name="groupRoleForm" class="form-horizontal" novalidate>
+        <div class="form-group">
+            <label for="groupRoleName" class="col-sm-3 control-label">Group-to-Role</label>
+            <div class="col-sm-9">
+                <input type="text" id="groupRoleName" name="groupRoleName" class="form-control" data-ng-model="newGroupRole.name" ng-required="true"/>
+                <span class="help-block" data-ng-show="groupRoleForm.groupRoleName.$error.required">Group-to-Role name is required</span>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="col-offset-3 col-sm-9">
+        <button type="submit" class="btn btn-primary" data-ng-click="submit()">Submit</button>
+        <button class="btn btn-primary" data-ng-click="cancelModal()">Cancel</button>
+    </div>
+</div>

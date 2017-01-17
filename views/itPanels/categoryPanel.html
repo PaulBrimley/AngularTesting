@@ -1,0 +1,26 @@
+<form data-ng-hide="panelData.selectedItem" role="form" name="categoryForm" class="form-horizontal">
+    <fieldset>
+        <legend>Select a category</legend>
+    </fieldset>
+</form>
+<form data-ng-show="panelData.selectedItem" role="form" name="categoryForm" class="form-horizontal">
+    <fieldset>
+        <legend>
+            {{panelData.title}}
+            <span class="pull-right">
+                <button data-ng-show="!selectedItem.editMode" class="btn btn-warning btn-xs" data-ng-click="selectedItem.editMode = true">Edit</button>
+                <button data-ng-show="selectedItem.editMode" class="btn btn-default btn-xs" data-ng-click="selectedItem.editMode = false">Cancel</button>
+            </span>
+        </legend>
+        <div class="form-group">
+            <label for="categoryName" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input id="categoryName" name="categoryName" type="text" class="form-control" data-ng-model="selectedItem.name" data-ng-disabled="!selectedItem.editMode">
+            </div>
+        </div>
+        <div data-ng-show="selectedItem.editMode">
+            <button class="btn btn-primary pull-right">Save</button>
+            <button class="btn btn-default pull-right" style="margin-right: 5px" data-ng-click="selectedItem.editMode = false">Cancel</button>
+        </div>
+    </fieldset>
+</form>

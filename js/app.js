@@ -68,6 +68,26 @@ app.directive('itGroupRole', function() {
         }
     }
 });
+app.directive('itAdminMainPanel', function() {
+    return {
+        restrict: 'E',
+        templateUrl: '../views/itPanels/itAdminMainPanel.html',
+        scope: {
+            panelData: '='
+        },
+        link: function(scope, elem, attr) {
+            scope.selectItem = function () {
+                if (scope.panelData.selectedItem) {
+                    scope.selectedItem = angular.copy(scope.panelData.selectedItem);
+                    scope.selectedItem.editMode = false;
+                } else {
+                    scope.selectedItem = {};
+                }
+
+            }
+        }
+    }
+});
 app.directive('inputField', function() {
     return {
         restrict: 'E',
@@ -81,39 +101,98 @@ app.directive('inputField', function() {
     }
 });
 
+app.controller('categoryModalCtrl', function($scope, $uibModalInstance) {
+    $scope.cancelModal = function () {
+        $uibModalInstance.dismiss()
+    };
+});
+
+app.controller('groupRoleModalCtrl', function($scope, $uibModalInstance) {
+    $scope.cancelModal = function () {
+        $uibModalInstance.dismiss()
+    };
+});
+
 app.controller('roleModalCtrl', function($scope, $uibModalInstance) {
     $scope.cancelModal = function () {
         $uibModalInstance.dismiss()
     };
 });
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.controller('resourceModalCtrl', function($scope, $uibModalInstance) {
+    $scope.cancelModal = function () {
+        $uibModalInstance.dismiss()
+    };
+});
+
+app.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
+
+
     $stateProvider
         .state('resourceAdminMockup', {
             url: '/resourceAdminMockup',
             templateUrl: 'views/resourceAdminMockup.html',
             controller: function($scope, adminPanelMockupSvc, $uibModal) {
                 $scope.categories = {
+                    title: 'Category',
+                    titlePlural: 'Categories',
+                    panel: './views/itPanels/categoryPanel.html',
+                    modalOpener: function() {
+                        $uibModal.open({
+                            templateUrl: '../views/itModals/categoryModal.html',
+                            controller: 'categoryModalCtrl',
+                            size: 'md'
+                        });
+                    },
                     data: {}
                 };
                 $scope.groups = [];
-                $scope.groupsRoles = {};
-                $scope.roles = {
+                $scope.groupsRoles = {
+                    title: 'Group-to-Role',
+                    titlePlural: 'Groups-to-Roles',
+                    panel: './views/itPanels/groupRolePanel.html',
+                    modalOpener: function() {
+                        $uibModal.open({
+                            templateUrl: '../views/itModals/groupRoleModal.html',
+                            controller: 'groupRoleModalCtrl',
+                            size: 'md'
+                        });
+                    },
                     data: {}
                 };
-                $scope.resources = {};
+                $scope.roles = {
+                    title: 'Role',
+                    titlePlural: 'Roles',
+                    panel: './views/itPanels/rolePanel.html',
+                    modalOpener: function() {
+                        $uibModal.open({
+                            templateUrl: '../views/itModals/roleModal.html',
+                            controller: 'roleModalCtrl',
+                            size: 'md'
+                        });
+                    },
+                    data: {}
+                };
+                $scope.resources = {
+                    title: 'Resource',
+                    titlePlural: 'Resources',
+                    panel: './views/itPanels/resourcePanel.html',
+                    modalOpener: function() {
+                        $uibModal.open({
+                            templateUrl: '../views/itModals/resourceModal.html',
+                            controller: 'resourceModalCtrl',
+                            size: 'md'
+                        });
+                    },
+                    data: {}
+                };
                 $scope.rolesResources = {};
                 $scope.rolesResourcesMethods = {};
 
-                $scope.showRoleModal = function() {
-                    var roleModal = $uibModal.open({
-                        templateUrl: '../views/roleModal.html',
-                        controller: 'roleModalCtrl',
-                        size: 'md'
-                    });
+                $scope.reset = function (item) {
+                    item.selectedItem = null;
+                    console.log('clicked', item);
                 };
-
-
 
                 adminPanelMockupSvc.get('adMockGroups.json').then(function (test0) {
                     $scope.groups = test0['groups'];
@@ -138,7 +217,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                         });
                         adminPanelMockupSvc.get('adminPanelMockResources.json').then(function (test3) {
                             test3['resources'].map(function (resource) {
-                                $scope.resources[resource.id] = {
+                                $scope.resources.data[resource.id] = {
                                     id: resource.id,
                                     name: resource.name,
                                     category: $scope.categories.data[resource.category],
@@ -155,16 +234,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
                                     });
                                     adminPanelMockupSvc.get('adGroupsRoles.json').then(function (test6) {
                                         test6['groupsRoles'].map(function (groupsRole) {
-                                            $scope.groupsRoles[groupsRole.id] = {
+                                            $scope.groupsRoles.data[groupsRole.id] = {
                                                 id: groupsRole.id,
-                                                group: groupsRole.group,
+                                                name: groupsRole.group,
                                                 role: $scope.roles.data[groupsRole.role]
                                             };
                                         });
                                         for (var prop in $scope.rolesResources) {
                                             $scope.roles.data[$scope.rolesResources[prop].roleId].resources[$scope.rolesResources[prop].resourceId] = {
                                                 id: $scope.rolesResources[prop].resourceId,
-                                                name: $scope.resources[$scope.rolesResources[prop].resourceId].name,
+                                                name: $scope.resources.data[$scope.rolesResources[prop].resourceId].name,
                                                 methods: getResourceMethods($scope.rolesResources[prop].resourceId)
                                             };
                                         }
@@ -375,6 +454,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         });
     $urlRouterProvider.otherwise('/resourceAdminMockup');
+    // $locationProvider.html5Mode(true);
 });
 
 app.controller('mainCtrl', function ($rootScope, $scope, $state) {

@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <div class="modal-title">Create New Resource</div>
+</div>
+<div class="modal-body">
+    <form action="" role="form" name="resourceForm" class="form-horizontal" novalidate>
+        <div class="form-group">
+            <label for="resourceName" class="col-sm-3 control-label">Resource</label>
+            <div class="col-sm-9">
+                <input type="text" id="resourceName" name="resourceName" class="form-control" data-ng-model="newResource.name" ng-required="true"/>
+                <span class="help-block" data-ng-show="resourceForm.resourceName.$error.required">Resource name is required</span>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="col-offset-3 col-sm-9">
+        <button type="submit" class="btn btn-primary" data-ng-click="submit()">Submit</button>
+        <button class="btn btn-primary" data-ng-click="cancelModal()">Cancel</button>
+    </div>
+</div>
